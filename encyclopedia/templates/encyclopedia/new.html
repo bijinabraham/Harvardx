@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block new %}
+            <div class="main col-lg-8 col-md-9">
+              <div class="alert alert-{{types}}" role="alert">
+                {{errmsg}}
+              </div>
+              
+                <h1>Create New Page</h1>
+                <form action="{%url 'wiki:new'%}" method="POST">
+                    {%csrf_token%}
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Title</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Username" required name="Title" aria-describedby="basic-addon1">
+                  </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" required name="Content" rows="3"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+{% endblock %}
+  
